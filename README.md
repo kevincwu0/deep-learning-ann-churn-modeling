@@ -27,3 +27,18 @@ What is Deep Learning?
   - So why is this called Deep Learning? 
   - Shallow learning
   - Not just one hidden layer, multiple hidden layers, connect everything and interconnect, that's why we call it deep learning
+
+
+Tooling
+- Anaconda - prepackaged solutions, IDEs, most common packages, convenient package solution.
+- Spyder (IDE) of choice z
+
+## Artificial Neural Network (ANN) Intuition + Background
+- Overview:
+  - Neuron - how the human brain works
+  - Activiation function - which one of them commonly used in neural network and which layer to use them
+  - How do Neural Networks work? (example) - working first to see what we're aiming for, simplified version (real estate)
+  - How do Neural Networks learn?
+  - Gradient Descent
+  - Stochastic Gradient Descent 
+  - Backpropagation
