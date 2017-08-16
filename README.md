@@ -42,3 +42,38 @@ Tooling
   - Gradient Descent
   - Stochastic Gradient Descent 
   - Backpropagation
+- Neuron:
+  - Neuron basic building blocks of ANNs
+  - How can we recreate a neuron in a machine to mimick how the human brain work in the hopes of creating an infrastructure to learn. The human brain is one of the most powerful learning tool in the planet. 
+  - First step of ANN is to recreate a Neuron
+  - Neurons with lots of branches, thread coming out the bottom (1800s)
+  - Neuron (body, dendrites - branches, axon - tail) - neuron by the itself is useless (like ants) but with lots of ants you can build a colony. With lots of neurons they can work together.
+  - Axon is the transmitter, dendrites is the receptors, axon connects to the dendrites of the next neuron doesn't really touch - neurotransmitter molecules with receptor and synapse. How signal being passed synapse
+  - Synapses is where signal is being passed
+  - How we're going to represent neurons in machines? 
+    - Neuron gets lots of input signals (X1, X2, Xm) and an output signal
+    - Input layer think of it as analogy of the human brain (senses, sight, smell), your brain is only getting electrical impulses from our organs, lives in a dark black box and making sense of the world through input
+    - Input layer passed through synapses
+    - Neuron (hidden layer)
+  - Input layers:
+    - Independent variables (rows in DB - age, money, transporation, of a person)
+    - Standardize the variables, sometimes want to normalize them -> want all of these variables to be similar and range of values, weights added up, neural networks if they're all the same is easier
+    - Reading to learn more about standarization or normalization of variables: Yann LeCun et al., 1998, Efficient BackProp - http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf 
+    - Output value
+      - Continuous (price)
+      - Binary (will exit yes/no)
+      - Categorical (Output will be several y1, y2, y3)
+    - Single Observation on left and right (input) and (right) rows
+    - Linear regression or multi-variate linear regression (simplifying) -> one row correlated to that row
+    - Synapses 
+      - Assigned weights (w1, w2, Wm) 
+      - Weights are crucial to ANN, how neural networks learn, adjusting weights what signal is important and what is not important to a neuron, what strength and what extent signals get passed along, weights are crucial and they're the ones that get adjusted. 
+      - Weights in all the synapses, training in ANN => Gradient descent and back propogation come into play
+    - Neuron
+      - signals go into neuron
+      - What happens inside the neuron?
+        - 1) Weighted sum of all input values
+        - 2) Applies an Activation Function - assigned to the layer (neuron), applied to weighted sum, neuron knows to whether to pass on signal on or not
+        - 3) Passes that signal to the next neuron down the line
+- Activation Function
+  - 
