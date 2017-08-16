@@ -106,3 +106,35 @@ Tooling
   - Ex. Inputs layer, lots of hidden layer, to one output value
     - Most likely used is a rectifier function used in hidden layer
     - Output layer where sigmoid function will be used
+- How do Neural Networks Learn?
+  - Two fundamental different approaches to coding
+    - Hard-coded coding, guide it the whole way and all options
+    - Create a facility to understand what it needs to know alone, figure out alone
+    - Example (How do you distinguish between Dog or Cats) 
+      - Programming side (whisker, nose, ear, color for cats) conditions (ear are point cat)
+      - Neural Network - code architecture, categorized data (go and learn what a dog and cat is), understand everything it needs to understand -> and learn from that
+    - Single-layer Feed forward Neural Network (Perceptron)
+      - y(hat) - predictive ouput value, y is actual output value
+      - Input values supplied to neural network (perceptron) => activation function is applied to our output
+      - Compare output value (Y(hat) to actual we need to get (Y value) 
+      - Cost function C = 1/2 (y^ - y)^2 - mostly commonly used (gradient descent)
+        - error in the prediction, minimize the cost function, closer y hat is to y
+        - Cost function, compared the two, feed it back to the neural network and propogates to the weight and gets updated
+        - what we have control of is to update the weight and tweak them
+      - Again, we're only dealing with one row (Row ID, study hours, sleep, quiz, => predict (exam)) 
+        - Yhat is change, cost is change, feed it back, weights gets adjusted
+        - One more time, feed in information, yhat
+        - Feed in that one row into neural network, weights, feed that information back to neural network, and minimize with cost function.
+    - We've only been dealing with one row, now what if we have multiple rows
+      - Example (8 rows) different students with (Row ID, Study Hrs, Sleep Hrs, Quiz, Exam)
+      - Eight perceptron (all the same perceptron) - feeding into one neural network
+      - One epoch - whole dataset and train neural network on all of the rows
+      - Again, same neural network is being used
+      - Feed into a row into neural network and get a value
+      - Compare to actual value and now all these differences C = sum(1/2 (y^ - y)^2)
+      - Full cost function adjust the weights now
+      - All these perceptrons is just one neural network again
+      - Weights will be shared among of them
+      - Continue iteration, feed every single row, and find cost function (8000, 800,000 etc.)
+      - Minimize the cost function is the goal
+      - Final neural networks achieved.
