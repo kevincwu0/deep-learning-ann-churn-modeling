@@ -76,4 +76,33 @@ Tooling
         - 2) Applies an Activation Function - assigned to the layer (neuron), applied to weighted sum, neuron knows to whether to pass on signal on or not
         - 3) Passes that signal to the next neuron down the line
 - Activation Function
-  - 
+  - Structure of a single neuron - input, weights, calculate weighted sum and applies activation function, and passes on signal (activation function)
+  - What options do we have for activation function?
+    - 1) Threshold Function
+      - X-axis (Weighted sum of inputs)
+      - Y-axis (0...1) 
+      - If the value is less than 0, passes 0
+      - If is more than 0, passes 1
+      - Binary function (yes/no) 
+    - 2) Sigmoid Function
+      - sigmoid(x) 1/ (1 + e^-x)
+      - logistic regression
+      - good about smooth
+      - vs. threshold doesn't have kinks, nice smoothing
+      - useful for final layer (output layer) esp. predict probability
+    - 3) Rectifier 
+      - One of the most popular in ANN
+      - Has a kink, but very popular
+    - 4) Hyberbolic Tangent (tanh)
+      - Similar to sigmoid -> goes below 0, might be useful
+    - Additional reading activation functions - By Xavier Glorot et al., 2011, Deep sparse rectifier neural networks - http://proceedings.mlr.press/v15/glorot11a/glorot11a.pdf
+      - You'll find why rectifier function is so heavily used 
+      - Once you feel comfortable with the practical side of things, easier to soak the above
+    - Recap: Threshould, Sigmoid, Rectifier, Hyperbolic Tangent
+  - Ex. Assume the DV is binary (y = 0 or 1) which activation function would you be able to use? 
+    - One neuron, an output value
+    - 1. Threshold activation function (0 or 1) => perfectly fits
+    - 2. Sigmoid activation function (also between 0 or 1, but has values in between) - but could be the probability of being 0 or 1, closer to the top more likely a 1, similar to logistic regression approach
+  - Ex. Inputs layer, lots of hidden layer, to one output value
+    - Most likely used is a rectifier function used in hidden layer
+    - Output layer where sigmoid function will be used
