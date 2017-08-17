@@ -137,4 +137,67 @@ Tooling
       - Weights will be shared among of them
       - Continue iteration, feed every single row, and find cost function (8000, 800,000 etc.)
       - Minimize the cost function is the goal
-      - Final neural networks achieved.
+      - Minumum cost function found => Final neural networks achieved. Optimal weights achieved, ready to move forward to application or testing => This process is called backpropagation
+      - Additional reading: CrossValidated, 2015, A list of cost functions used in neural networks, alongside applications -> https://stats.stackexchange.com/questions/154879/a-list-of-cost-functions-used-in-neural-networks-alongside-applications
+- Gradient Descent
+  - In order for a neural network to learn, backpropagation (sum of differences of yhat and y) is backpropagated to the neural networks and weights are adjusted.
+  - Look at how weights are adjusted
+  - How to minimize cost function?
+    - 1. Brute force, try all possible => why not try brute force? Try 1000s of inputs for weight. One weight it might work, but increase number of weights and synapses you face the Curse of Dimensionality.
+      - Curse of Dimensionality
+        - Example (Neural Networks Housing example of how NN work) 
+        - Before the weights are trained (all these possible synapes) 4 * 5 (25 weights) 
+        - Look at how we could we brute force our way through it
+        - 1,000 (for each weight) x 10000 x 1000 .... 1000  = 10000^24 10^75
+        - June 2016 Sunway TaihuLight World's fast Super Computer (93 PFLOPS) Floating Operations pers seconds 93 x 10^15 FLOPS per second, average GFLOP for average computer
+          - 19^75/ (93 * 10^15) 
+          - 1.08 x 10^58 seconds = 3.42 x 10^50 years (older than universe)
+        - What if multiple hidden layers? Never will happen
+    - 2. Gradient Descent 
+      - Slope at that specific point (negative then going down hill) 
+        - means you need to go down hill
+      - Slope is now positive (then go left -> roll the ball down)
+      - Think of it as a ball rolling (not really more like zig zaggy)
+      - More elements why does it go down why not upwards
+        - parameters can be tweaked for the above
+      - Instead of brute force, we can take a look at the slope with regards to the hill, less and less
+      - Gradient descending to the mimumum of the cost function
+- Stochastic Gradient Descent
+  - Gradient descent is a very efficient method of solving our optimization of minimize our cost function, 10^57 to minutes/hours, which way is down hill, and get to the minimum faster
+  - Cost function to convex, convex to one direction, one global minimum
+  - What if cost function is not convex? How could that happen?
+    - We don't choose cost function not the squared difference between yhat and y
+    - or choose this but a multi-dimensional that is not convex
+  - Local minimum rather than maximum => subpar neural network
+  - What do we do here? => Stochastic Gradient Descent
+  - Doesn't require cost function to be convex
+  - Gradient Descent (Rows, same neural network, cost function, adjust weights, batch gradient descent)
+  - Stochastic Gradient Descent 
+    - Row by row we adjust the weights vs the whole epoch
+  - Batch Gradient Descent vs. Stochastic Gradient Descent
+    - SGD avoids the local minimum problem, function can afford higher fluctuations, much more likely to find the global minimum
+    - SGD is actually faster because it doesn't have to wait memory to being loaded
+    - BGD (pro) - deterministic algorithm, same starting weight, you'll get same results, iteration
+    - Stochastic (random) updating neural network in a stochastic manner, different iterations to get there.
+  - Also mini batch gradient descent (combination of the two) -> number of rows at a time
+  - Further reading on gradient descent: Andrew Trask, 2015, A Neural Network in 13 lines of Python (Part 2 – Gradient Descent) - https://iamtrask.github.io/2015/07/27/python-network-part2/
+    - Interesting thoughts on how to apply gradient descents, tips
+  - Mathematics reading: Michael Nielsen, 2015, Neural Networks and Deep Learning - http://neuralnetworksanddeeplearning.com/chap2.html
+- Backpropagation
+  - We already know everything to know in a neural network
+    - Forward Propagation (Input layer to hidden to ouput, yhat and errors)
+    - Backpropagation - train network by adjusting the weight
+  - Backpropagation - interesting, sophisticated mathematics that allow us to simulataneously adjust the weights
+    - huge advantage (+) - during the process of backpropagation the way the algorithm is structured, each part of the weights the neural network is responsible for. Why it picked up so rapidly and was a major breakthrough, mathematics in the background
+  - Intuition - adjusts all the weights at the same time
+- Training the ANN with Stochastic Gradient Descent
+  - 1. Randomly initalise the weights to small numbers close to 0 (but not 0)
+    - Through forward propagation and back propagation weights are adjusted until the cost function is minimized
+  - 2. Input the first observation of your dataset in the input layer, each feature in one input node.
+    - take the columns and put them in input node.
+  - 3. Forward-Propagation: from left to right, the neurons are activated in a way that the impact of each neuron's activation is limited by the weights (determine how important each neuron is). Propagate the activations until getting the predicted results y. 
+  - 4. Compare the predicted result to the actual result. Measure the generated error. 
+  - 5. Back-propagation: from right to left, the error is back-propagated. Update the weights according to how much they are responsible for the error. The learning rate decides by how much we update the weights.
+  - 6. Repeat Steps 1 to 5 and update the weights after each observation (Reinforcement Learning, SGD). Or: Repeat Steps 1 to 5 but update the weights only after a batch of observations (Batch Learning, Minibatch)
+  - 7. When the whole training set passed through the ANN, that makes an epoch. Redo more epochs. 
+  - Steps to build an ANN
