@@ -7,3 +7,5 @@ Goal: create a geographic segmentation model to tell which of the customers are 
 Valuable to any customer-oriented organisations. Geographic Segmentation Modeling can be applied to millions of scenarios, very valuable. (doesn't have to be for banks, churn rate, etc.). Same scenario works for (e.g. should this person get a loan or not? Should this be approved for credit => binary outcome, model, more likely to be reliable). Fradulant transactions (which is more likely to be fradulant) 
 
 - Binary outcome with lots of independent variables you can build a proper robust model to tell you which factors influence the outcome. 
+
+![alt text](https://github.com/kevincwu0/deep-learning-ann-churn-modeling/blob/master/data_screenshot.png)
