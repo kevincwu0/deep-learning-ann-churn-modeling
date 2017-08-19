@@ -5,6 +5,15 @@ Created on Fri Aug 18 14:33:56 2017
 
 @author: kevinwu
 """
+# Training the ANN with Stochastic Gradient Descent 
+# First layer - input layer 
+# Step 1: Randomly initialise the weights to small numbers close to 0 (but not 0)
+# Step 2: Input the first observation of the dataset in the input layer, each feature in one input node (11 input nodes)
+# Step 3: Activation function hidden layer (rectifier), sigmoid (good for output layer)
+# Step 4: Compare the predicted result o the actual result, measure the generated error
+# Step 5: Back-propagation - learning rate decideds how much we update the weights
+# Step 6: update the weights after each observation
+# Step 7: Train
 
 # Part 1 - Data Preprocessing
 # Importing the libraries
@@ -20,7 +29,7 @@ y = dataset.iloc[:, 13].values
 # Encoding categorical data
 # Encode before splitting because matrix X and independent variable Y must be already encoded
 # Found two categorical data (country, gender)
-# create dummy variables, avoid dummy varialbe trap
+# create dummy variables, avoid dummy variable trap
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 labelencoder_X_1 = LabelEncoder()
 X[:, 1] = labelencoder_X_1.fit_transform(X[:, 1])
@@ -42,11 +51,20 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 # Part 2 - Making the ANN
-# sequential module - initialize neural network
-# dense - layers of ANN
+
+# Importing the Keras libraries and package
+# Sequential module - initialize neural network
+# Dense - layers of ANN
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
+
+# Initialising the ANN
+classifier = Sequential()
+
+# Adding the input layer and the first hidden layer
+# Take average of input + output for units/output_dim param in Dense
+classifier.add(Dense(6, input_dim = 11, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
 
 # Part 3 - Making the predictions and evaluating the model
 
