@@ -64,7 +64,14 @@ classifier = Sequential()
 
 # Adding the input layer and the first hidden layer
 # Take average of input + output for units/output_dim param in Dense
+# input_dim is necessary for the first layer as it was just initialized
 classifier.add(Dense(6, input_dim = 11, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
+
+# Adding the second hidden layer
+# doesn't need the input_dim params
+# kernel_initializer updates weights
+# activation function - rectifier
+classifier.add(Dense(6, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
 
 # Part 3 - Making the predictions and evaluating the model
 
