@@ -41,6 +41,15 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
+# Part 2 - Making the ANN
+# sequential module - initialize neural network
+# dense - layers of ANN
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
+
+# Part 3 - Making the predictions and evaluating the model
+
 # Fitting classifier to the Training set
 # Create your classifier here
 
