@@ -83,6 +83,10 @@ classifier.add(Dense(1, kernel_initializer = 'glorot_uniform', activation = 'sig
 # binary_crossentropy, categorical_cross_entropy
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
+# Fitting the ANN to the Training Set
+# X_train, y_train, Batch size, Epochs (whole training set)
+classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
+
 # Part 3 - Making the predictions and evaluating the model
 
 # Fitting classifier to the Training set
