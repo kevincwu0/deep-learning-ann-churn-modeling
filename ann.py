@@ -77,6 +77,12 @@ classifier.add(Dense(6, kernel_initializer = 'glorot_uniform', activation = 'rel
 # dependent variable with more than two categories (3), output_dim needs to change (e.g. 3), activation function - sufmax
 classifier.add(Dense(1, kernel_initializer = 'glorot_uniform', activation = 'sigmoid' ))
 
+# Compiling the ANN - applying Stochastic Gradient Descent to whole ANN
+# Several different SGD algorithms
+# mathematical details based on the loss function
+# binary_crossentropy, categorical_cross_entropy
+classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
 # Part 3 - Making the predictions and evaluating the model
 
 # Fitting classifier to the Training set
