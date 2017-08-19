@@ -73,6 +73,10 @@ classifier.add(Dense(6, input_dim = 11, kernel_initializer = 'glorot_uniform', a
 # activation function - rectifier
 classifier.add(Dense(6, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
 
+# Adding the output layer
+# dependent variable with more than two categories (3), output_dim needs to change (e.g. 3), activation function - sufmax
+classifier.add(Dense(1, kernel_initializer = 'glorot_uniform', activation = 'sigmoid' ))
+
 # Part 3 - Making the predictions and evaluating the model
 
 # Fitting classifier to the Training set
