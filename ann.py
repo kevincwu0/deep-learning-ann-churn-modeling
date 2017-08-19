@@ -89,11 +89,10 @@ classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
 
 # Part 3 - Making the predictions and evaluating the model
 
-# Fitting classifier to the Training set
-# Create your classifier here
-
 # Predicting the Test set results
+# Training set, see if the new data probability is right
 y_pred = classifier.predict(X_test)
+y_pred = (y_pred > 0.5)
 
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
