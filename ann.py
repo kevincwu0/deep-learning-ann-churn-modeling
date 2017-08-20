@@ -94,6 +94,10 @@ classifier.fit(X_train, y_train, batch_size = 10, nb_epoch = 100)
 y_pred = classifier.predict(X_test)
 y_pred = (y_pred > 0.5)
 
+# Predicting a single new observation
+new_prediction = classifier.predict(sc.transform(np.array([[0, 0, 600, 1, 40, 3, 60000, 2, 1, 1, 50000]])))
+new_prediction = (new_prediction > 0.5)
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
+

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/kevinwu/anaconda3/lib/python3.5/site-packages/spyder/app/mainwindow.py", line 2998, in main
+    mainwindow = run_spyder(app, options, args)
+  File "/Users/kevinwu/anaconda3/lib/python3.5/site-packages/spyder/app/mainwindow.py", line 2902, in run_spyder
+    main.setup()
+  File "/Users/kevinwu/anaconda3/lib/python3.5/site-packages/spyder/app/mainwindow.py", line 794, in setup
+    self.help = Help(self)
+  File "/Users/kevinwu/anaconda3/lib/python3.5/site-packages/spyder/plugins/help.py", line 355, in __init__
+    color_scheme = self.get_color_scheme()
+  File "/Users/kevinwu/anaconda3/lib/python3.5/site-packages/spyder/plugins/__init__.py", line 502, in get_color_scheme
+    return get_color_scheme(CONF.get('color_schemes', 'selected'))
+  File "/Users/kevinwu/anaconda3/lib/python3.5/site-packages/spyder/config/gui.py", line 148, in get_color_scheme
+    color_scheme[key] = CONF.get("color_schemes", "%s/%s" % (name, key))
+  File "/Users/kevinwu/anaconda3/lib/python3.5/site-packages/spyder/config/user.py", line 375, in get
+    raise cp.NoOptionError(option, section)
+configparser.NoOptionError: No option 'solarized/dark/comment' in section: 'color_schemes'
