@@ -101,3 +101,24 @@ new_prediction = (new_prediction > 0.5)
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 
+# Part 4 - Evaluating, Imrpvoing and Tuning the ANN
+
+# Evaluating the ANN 
+# Keras wrapper and Sci-kit Learn for k-Fold Cross Validation 
+from keras.wrappers.scikit_learn import KerasClassifier
+from sklearn.model_selection import cross_val_score
+from keras.models import Sequential
+from keras.layers import Dense
+def build_classifier():
+    classifier = Sequential()
+    classifier.add(Dense(6, input_dim = 11, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
+    classifier.add(Dense(6, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
+    classifier.add(Dense(1, kernel_initializer = 'glorot_uniform', activation = 'sigmoid' ))
+    classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+    return classifier
+# k-Fold cross validator to check if the real relevant accuracy or the second one 
+#ß and where we are in bias-variance tradeoffs
+classifier = KerasClassifier(build_fn = build_classifier, batch_size = 10, nb_epoch = 100)
+accuracies = cross_val_score(estimator = classifier, X = X_train, y = y_train, cv = 10, n_jobs = -1)
+mean = accuracies.mean()
+variable = accuracies.std()
