@@ -58,20 +58,22 @@ X_test = sc.transform(X_test)
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
-
+from keras.layers import Dropout
 # Initialising the ANN
 classifier = Sequential()
 
-# Adding the input layer and the first hidden layer
+# Adding the input layer and the first hidden layer with dropout
 # Take average of input + output for units/output_dim param in Dense
 # input_dim is necessary for the first layer as it was just initialized
 classifier.add(Dense(6, input_dim = 11, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
+classifier.add(Dropout(p = 0.1))
 
-# Adding the second hidden layer
+# Adding the second hidden layer with dropout
 # doesn't need the input_dim params
 # kernel_initializer updates weights
 # activation function - rectifier
 classifier.add(Dense(6, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
+classifier.add(Dropout(p = 0.1))
 
 # Adding the output layer
 # dependent variable with more than two categories (3), output_dim needs to change (e.g. 3), activation function - sufmax
@@ -122,3 +124,31 @@ classifier = KerasClassifier(build_fn = build_classifier, batch_size = 10, nb_ep
 accuracies = cross_val_score(estimator = classifier, X = X_train, y = y_train, cv = 10, n_jobs = -1)
 mean = accuracies.mean()
 variable = accuracies.std()
+
+# overfitting is when it's trained to much on the training set, less performant, test set
+# and training set, high variance in, Dropout Regulariatio to reduce overfitting if needed
+
+# Tuning the ANN, parameters learned during training (weights), stay fixed (hyperparamers - fixed, epochs, neurons)
+# parameter tuning best value of these hyperparameters, GridSearchCV with k-Fold Cross Validation
+from keras.wrappers.scikit_learn import KerasClassifier
+from sklearn.model_selection import GridSearchCV
+from keras.models import Sequential
+from keras.layers import Dense
+def build_classifier(optimzer):
+    classifier = Sequential()
+    classifier.add(Dense(6, input_dim = 11, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
+    classifier.add(Dense(6, kernel_initializer = 'glorot_uniform', activation = 'relu' ))
+    classifier.add(Dense(1, kernel_initializer = 'glorot_uniform', activation = 'sigmoid' ))
+    classifier.compile(optimizer = optimzer, loss = 'binary_crossentropy', metrics = ['accuracy'])
+    return classifier
+classifier = KerasClassifier(build_fn = build_classifier)
+parameters = {'batch_size': [25, 32],
+              'nb_epoch': [100, 500],
+              'optimzer': ['adam', 'rmsprop']}
+grid_search = GridSearchCV(estimator = classifier,
+                           param_grid = parameters,
+                           scoring = 'accuracy', s
+                           cv = 10)
+grid_search = grid_search.fit(X_train, y_train)
+best_parameters = grid_search.best_params_
+best_accuracy = grid_search.best_score_
